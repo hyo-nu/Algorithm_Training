@@ -1,7 +1,8 @@
-N = int(input())
+num = int(input())
+num = list(map(int,list(str(num))))
 sum = 0
 
-while N > 0:
-    sum += N % 10
-    N = N // 10
+for c in num:
+    sum += c
+
 print(sum)
