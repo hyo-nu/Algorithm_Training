@@ -1,6 +1,15 @@
-Test = int(input())
+T = int(input())
 
-for T in range(Test):
-    num = list(map(int,input().split()))
-    num.sort()
-    print(f'#{T+1} {num[len(num)-1]}')
+result=[]
+
+for c in range(0,T):
+    l = list(map(int,input().split()))
+    l.sort()
+    result.append(l)
+
+for d in range(0,T):
+    print("#" + str(d+1),result[d][9])
+
+
+
+
