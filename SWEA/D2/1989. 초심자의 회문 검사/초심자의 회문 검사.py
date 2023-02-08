@@ -1,10 +1,15 @@
+
 Test = int(input())
 
 for T in range(Test):
     word = input()
-    count = 0
-    for w in range(len(word)//2):
-        if word[w] != word[len(word)-w-1]:
-            count += 1   
-    if count == 0 : print(f'#{T+1} 1')
-    else : print(f'#{T+1} 0')
+    N = len(word)
+    cnt = 0
+    for i in range(N//2):
+        if word[i] == word[N - i - 1]:
+            cnt += 1
+        elif word[i] != word[N - i - 1]:
+            print(f'#{T+1}', 0)
+            break
+    if cnt == N//2:
+        print(f'#{T + 1}', 1)
