@@ -1,33 +1,44 @@
+def sums(arr):
+    result = 0
+    for i in arr:
+        result += i
+    return result
+
+def sdoku_check(arr_row):
+    count = 0
+    # 가로 확인
+    for lst1 in arr_row:
+        if sums(lst1) == 45 : count += 1
+
+    # 세로 확인
+    arr_column =[]
+    for j in range(9):
+        arr_column.append([arr_row[i][j] for i in range(9)]) # 전치행렬
+    for lst2 in arr_column:
+        if sums(lst2) == 45 : count += 1
+
+    # box확인
+    box_lst =[]
+    for k in [0, 3, 6]:
+        for l in [0, 3, 6]:
+            box_lst = []
+            for m in range(3):
+                for o in range(3):
+                    box_lst += [arr_row[m+k][o+l]]
+            if sums(box_lst) == 45 : count += 1
+    if count == 27 : return 1
+    else : return 0
+
+
 Test = int(input())
 
 for T in range(Test):
-    check_cnt = 0
-    row_check = {}
-    box_check = {}
-    
-    for c in range(9):
-        sudocu = list(map(int,input().split()))
-        
-        # 가로줄 먼저 확인
-        sudocu_sort = set(sudocu)
-        if len(sudocu) != len(sudocu_sort) : check_cnt += 1
+    sdoku = [list(map(int, input().split())) for _ in range(9)] # 스도쿠 한판
 
-        # 세로줄 딕셔너리
-        for sdc in range(len(sudocu)):
-            if sdc not in row_check : row_check[sdc] = [sudocu[sdc]]
-            else : row_check[sdc] = row_check[sdc] + [sudocu[sdc]]
-         
-        # box 딕셔너리
-        a = c // 3
-        for b in range(3):
-            for c in range(3):
-                if (3*a+b) not in box_check : box_check[3*a+b] = [sudocu[3*b+c]]
-                else : box_check[3*a+b] =box_check[3*a+b] + [sudocu[3*b+c]]
-        
-    for d in range(9):
-        if len(row_check.get(d)) != len(set(row_check.get(d))): check_cnt += 1
+    print(f'#{T+1}' ,sdoku_check(sdoku))
 
-        if len(box_check.get(d)) != len(set(box_check.get(d))): check_cnt += 1
 
-    if check_cnt == 0: print(f'#{T+1} 1')
-    else : print(f'#{T+1} 0')
+
+
+
+
