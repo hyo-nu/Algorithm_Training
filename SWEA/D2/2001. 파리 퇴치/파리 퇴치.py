@@ -1,20 +1,15 @@
 Test = int(input())
 
 for T in range(Test):
-    N, M = map(int,input().split())
-    pari_kill = []
-    pari_kill_dict = {}
-    
-    for n in range(1,N+1):
-        pari = list(map(int,input().split()))
-        pari_kill_dict.setdefault(n,pari)
+    N,M = map(int,input().split())
+    pari = [list(map(int,input().split())) for _ in range(N)]
 
-    for c in range(1,n-M+2):
-        for d in range(n-M+1):
+    pari_max = 0
+    for i in range(N-M+1):
+        for j in range(N-M+1):
             pari_cnt = 0
-            for m in range(M):
-                pari_cnt += sum(pari_kill_dict.get(c+m)[d:d+M])
-                pari_kill.append(pari_cnt)
-
-    pari_kill.sort()
-    print(f'#{T+1} {pari_kill[-1]}')
+            for r in range(M):
+                for c in range(M):
+                    pari_cnt += pari[i+r][j+c]
+            if pari_max < pari_cnt: pari_max = pari_cnt
+    print(f'#{T+1}',pari_max)
