@@ -3,8 +3,6 @@ def back(n,lst,sum):
         if len(lst) == 7 and sum == 100:
             ans.append(lst)
         return
-    if sum > 100 :
-        return
     back(n+1,lst + [seven[n]],sum + seven[n])
     back(n+1,lst,sum)
 
