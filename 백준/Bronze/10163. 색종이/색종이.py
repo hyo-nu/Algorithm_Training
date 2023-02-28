@@ -2,7 +2,7 @@ N = int(input()) # N <= 10
 num = 0
 Map = [[0] * 1001 for _ in range(1001)]
 
-cnt = []
+cnt = [0] * (N+1)
 rs = cs = re = ce = 0
 for n in range(N):
     R,C,W,H = map(int,input().split())
@@ -15,10 +15,9 @@ for n in range(N):
         for c in range(C,C + H):
             Map[r][c] = num
 
-for i in range(1,N+1):
-    cnt = 0
-    for r in range(rs,re):
-        for c in range(cs,ce):
-            if Map[r][c] == i:
-                cnt += 1
-    print(cnt)
+
+for r in range(rs,re):
+    for c in range(cs,ce):
+        cnt[Map[r][c]] += 1
+for i in range(1,len(cnt)):
+    print(cnt[i])
