@@ -12,12 +12,12 @@ for n in range(N):
     if rs > R : rs = R
     if cs > C : cs = C
     for r in range(R,R + W):
-        for c in range(C,C + H):
-            Map[r][c] = num
-
+        Map[r][C:C+H] = [num]*(H)
 
 for r in range(rs,re):
     for c in range(cs,ce):
         cnt[Map[r][c]] += 1
+
 for i in range(1,len(cnt)):
     print(cnt[i])
+
