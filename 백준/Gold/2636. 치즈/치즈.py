@@ -39,7 +39,6 @@ def BFS2(vi):
                                             break
                         break
     return(count)
-
 R, C = map(int,input().split())
 G = [list(map(int,input().split())) for _ in range(R)]
 count = []
