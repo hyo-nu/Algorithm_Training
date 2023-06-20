@@ -1,5 +1,4 @@
 from heapq import heappop, heappush
-
 def solution(operations):
     h = []
     for data in operations:
