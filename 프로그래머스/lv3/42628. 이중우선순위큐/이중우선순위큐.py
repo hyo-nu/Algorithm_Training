@@ -7,12 +7,8 @@ def solution(operations):
         if ID == "I" : heappush(h, int(num))
         elif ID == "D" and h and num == "-1" : heappop(h)
         elif ID == "D" and h and num == "1" :
-            tmp = [-heappop(h) for _ in range(len(h))]
-            tmp.sort(reverse = True)
-            tmp.pop()
-            for ele in tmp:
-                heappush(h,-ele)               
+            h.remove(max(h))
+
     if not h : return [0,0]
     else : 
-        h.sort()
-        return [h[-1],h[0]]
+        return [max(h),h[0]]
