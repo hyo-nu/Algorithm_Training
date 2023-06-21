@@ -13,8 +13,6 @@ def union(sp,ep):
     sp = find(sp)
     ep = find(ep)
 
-    if sp == ep:return
-
     if sp < ep:
         rep[ep] = sp
     else:
