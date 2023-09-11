@@ -2,30 +2,24 @@ import sys
 sys.setrecursionlimit(10**7)
 input = sys.stdin.readline
 
-def find(sp):
-    if sp == rep[sp]:
+def find_parent(sp):
+    if sp == parent[sp]:
         return sp
-
-    rep[sp] = find(rep[sp])
-    return rep[sp]
+    parent[sp] = find_parent(parent[sp])
+    return parent[sp]
 
 def union(sp,ep):
-    sp = find(sp)
-    ep = find(ep)
-
-    if sp < ep:
-        rep[ep] = sp
-    else:
-        rep[sp] = ep
+    parent[find_parent(sp)] = find_parent(ep)
 
 N, M = map(int,input().split())
-rep = [i for i in range(N + 1)]
+parent = [i for i in range(N + 1)]
 
 for _ in range(M):
-    flag, sp, ep = map(int,input().split())
-    if flag :
-        if find(sp) == find(ep) :
+    Type, a, b = map(int,input().split())
+    if not Type:
+        union(a,b)
+    elif Type:
+        if find_parent(a) == find_parent(b):
             print("YES")
-        else :
+        else:
             print("NO")
-    else : union(sp, ep)
