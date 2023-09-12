@@ -3,9 +3,8 @@ sys.setrecursionlimit(10**7)
 input = sys.stdin.readline
 
 def find_parent(sp):
-    if sp == parent[sp]:
-        return sp
-    parent[sp] = find_parent(parent[sp])
+    if sp != parent[sp]:
+	    parent[sp] = find_parent(parent[sp])
     return parent[sp]
 
 def union(sp,ep):
