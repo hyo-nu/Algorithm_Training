@@ -1,23 +1,26 @@
-PC = int(input())
-Edge = int(input())
-G = [[] for _ in range(PC+1)]
+import sys
+input = sys.stdin.readline
+from collections import deque
 
-for i in range(Edge):
-    u,v = map(int,input().split())
+N, M = int(input()), int(input())
+
+G = [[] for _ in range(N + 1)]
+for _ in range(M):
+    u, v = map(int,input().split())
     G[u].append(v)
     G[v].append(u)
 
-    SP = 1
-    Q = []
-    Q.append(SP)
-    visited = [0] * (PC + 1)
-    visited[SP] = 1
+Q = deque([1])
+vi = [0] * (N + 1)
+vi[1] = 1
 
-    while Q:
-        NP = Q.pop(0)
-        for w in G[NP]:
-            if not visited[w]:
-                visited[w] = 1
-                Q.append(w)
+virus = 0
+while Q:
+    now = Q.popleft()
+    for next in G[now]:
+        if not vi[next]:
+            Q.append(next)
+            vi[next] = 1
+            virus += 1
 
-print(visited.count(1)-1)
+print(virus)
