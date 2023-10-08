@@ -36,8 +36,6 @@
 
 ### (5) 플로이드-워셜
 
-### (6) DFS + 백트래킹
-
 ## <span style="background-color: #FDF5E6">5. 백트래킹(Tree)</span>
 
 ### (1) Tree의 개념
