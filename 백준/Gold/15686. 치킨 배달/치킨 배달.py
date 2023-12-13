@@ -1,4 +1,5 @@
 import sys
+input = sys.stdin.readline
 from itertools import combinations
 
 INF = 1e9
@@ -21,9 +22,7 @@ for r in range(C):
 Min_distance = INF
 for choices in combinations(range(C), M):
     new_G = list(zip(*list(G[choice] for choice in choices)))
-    distance = 0
-    for r in range(H):
-        if Min_distance <= distance: break
-        distance += min(new_G[r])
+    distance = sum(min(new_G[r]) for r in range(H))
     Min_distance = min(Min_distance, distance)
 print(Min_distance)
+
