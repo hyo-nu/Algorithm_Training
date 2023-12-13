@@ -22,7 +22,6 @@ for r in range(C):
 Min_distance = INF
 for choices in combinations(range(C), M):
     new_G = list(zip(*list(G[choice] for choice in choices)))
-    distance = sum(min(new_G[r]) for r in range(H))
-    Min_distance = min(Min_distance, distance)
+    Min_distance = min(Min_distance, sum(min(new_G[r]) for r in range(H)))
 print(Min_distance)
 
