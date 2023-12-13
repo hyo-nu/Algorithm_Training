@@ -2,20 +2,22 @@ import sys
 input = sys.stdin.readline
 
 def find_parent(sp):
-    if sp != parent[sp]:
-        parent[sp] = find_parent(parent[sp])
-    return parent[sp]
+    if parent[sp] < 0:
+        return sp
+    ep = find_parent(parent[sp])
+    parent[sp] = ep
+    return ep
 
 def union(sp, ep):
     parent[find_parent(sp)] = find_parent(ep)
 
 N, M = map(int,input().split())
-parent = [i for i in range(N + 1)]
+parent = [-1] * (N + 1)
 G = []
 cost = 0
 for _ in range(M):
     a, b, c = map(int,input().split())
-    G.append([a,b,c])
+    G.append((a,b,c))
     cost += c
 
 G.sort(key = lambda x : x[2])
