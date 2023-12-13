@@ -1,3 +1,4 @@
+import sys
 from itertools import combinations
 
 INF = 1e9
@@ -10,14 +11,19 @@ for r in range(N):
         if tmp[c] == 1 : houses.append((r,c))
         elif tmp[c] == 2 : chickens.append((r,c))
 
+H, C = len(houses), len(chickens)
+G = [[0] * H for _ in range(C)]
+
+for r in range(C):
+    for c in range(H):
+        G[r][c] = abs(houses[c][0] - chickens[r][0]) + abs(houses[c][1] - chickens[r][1])
+
 Min_distance = INF
-for chicken in combinations(chickens, M):
-    total_distance = 0
-    for hr, hc in houses:
-        distance = INF
-        for cr, cc in chicken:
-            distance = min(distance,abs(cr-hr) + abs(cc-hc))
-        total_distance += distance
-        if Min_distance <= total_distance:break
-    Min_distance = min(total_distance,Min_distance)
+for choices in combinations(range(C), M):
+    new_G = list(zip(*list(G[choice] for choice in choices)))
+    distance = 0
+    for r in range(H):
+        if Min_distance <= distance: break
+        distance += min(new_G[r])
+    Min_distance = min(Min_distance, distance)
 print(Min_distance)
