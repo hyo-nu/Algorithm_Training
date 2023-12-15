@@ -1,10 +1,8 @@
 N = int(input())
+start = N - 9 * len(str(N))
 
-for i in range(1,N + 1):
-    constructor = result = i
-    while i:
-        constructor += i % 10
-        i = i // 10
-    if constructor == N : break
+for num in range(start if start > 0 else 0, N + 1):
+    constructor = num
+    if constructor + sum(list(map(int,list(str(num))))) == N : break
 
-print(0 if result == N else result)
+print(0 if constructor == N else constructor)
