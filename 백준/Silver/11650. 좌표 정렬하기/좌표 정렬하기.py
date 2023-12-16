@@ -1,5 +1,8 @@
-N = int(input())
-G = sorted([list(map(int,input().split())) for _ in range(N)])
+import sys
 
-for lst in G:
-    print(*lst)
+def cord_sort(xy):
+    x, y = xy.split()
+    return int(x) + int(y) / 1000000
+
+cordinates = sorted(sys.stdin.readlines()[1:], key = lambda x : cord_sort(x))
+print("".join(cordinates))
