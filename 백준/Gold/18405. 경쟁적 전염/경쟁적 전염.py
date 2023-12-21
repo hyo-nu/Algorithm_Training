@@ -28,4 +28,5 @@ S, X, Y = map(int,input().split())
 
 for _ in range(S):
     Q = deque(BFS())
+    if G[X-1][Y-1] : break
 print(G[X-1][Y-1])
