@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 a=int(input())
 b=list(map(int, input().split()))
 add, sub, mul, div=map(int, input().split())
