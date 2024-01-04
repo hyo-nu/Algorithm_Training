@@ -1,6 +1,9 @@
+import sys
+
+input = sys.stdin.readline
 while True:
     stack = []
-    sentence = input()
+    sentence = input().rstrip()
     if sentence == "." : break
 
     for alpha in sentence:
