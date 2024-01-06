@@ -4,10 +4,9 @@ input = sys.stdin.readline
 N, M, B = map(int,input().split())
 land = [0] * 257
 
-for r in range(N):
-    tmp = list(map(int,input().split()))
-    for c in range(M):
-        land[tmp[c]] += 1
+for _ in range(N):
+    for value in map(int,input().split()):
+        land[value] += 1
 
 works = []
 for height in range(256,-1,-1):
