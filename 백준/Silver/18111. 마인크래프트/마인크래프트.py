@@ -10,7 +10,7 @@ for r in range(N):
         land[tmp[c]] += 1
 
 works = []
-for height in range(257):
+for height in range(256,-1,-1):
     time = 0
     block = B
     for i in range(257):
@@ -25,4 +25,4 @@ for height in range(257):
     if block >= 0 :
         works.append((time,height))
 
-print(*sorted(works,key=lambda x : (x[0],-x[1]))[0])
+print(*sorted(works,key=lambda x : x[0])[0])
