@@ -2,18 +2,15 @@ import sys
 input = sys.stdin.readline
 
 N, M, B = map(int,input().split())
-height_max, height_min = 0, 257
 land = [0] * 257
 
 for r in range(N):
     tmp = list(map(int,input().split()))
     for c in range(M):
         land[tmp[c]] += 1
-        if height_max < tmp[c] : height_max = tmp[c]
-        if height_min > tmp[c] : height_min = tmp[c]
 
 works = []
-for height in range(height_min, height_max + 1):
+for height in range(257):
     time = 0
     block = B
     for i in range(257):
