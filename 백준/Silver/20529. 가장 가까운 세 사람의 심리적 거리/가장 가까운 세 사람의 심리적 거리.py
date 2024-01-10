@@ -8,11 +8,11 @@ for test in range(int(input())):
     mbtikinds = []
     for mbti, count in Counter(list(input().split())).items():
         if count >= 3 : mbtikinds.extend([mbti] * 3)
-        elif count == 2 : mbtikinds.extend([mbti] * 2)
-        elif count == 1 : mbtikinds.extend([mbti] * 1)
+        else : mbtikinds.extend([mbti] * count)
 
     min_distance = 13
-    for choice in combinations(mbtikinds,3):
+    case = set(choice for choice in combinations(mbtikinds, 3))
+    for choice in case:
         choice = list(choice) + [choice[0]]
         total = 0
         for i in range(3):
