@@ -11,8 +11,7 @@ for test in range(int(input())):
         else : mbtikinds.extend([mbti] * count)
 
     min_distance = 13
-    case = set(choice for choice in combinations(mbtikinds, 3))
-    for choice in case:
+    for choice in set(choice for choice in combinations(mbtikinds, 3)):
         choice = list(choice) + [choice[0]]
         total = 0
         for i in range(3):
