@@ -3,15 +3,14 @@ input = sys.stdin.readline
 
 for test in range(int(input())):
     n = int(input())
-    stiker = [[0] + list(map(int,input().split())) for _ in range(2)]
-    dp = [[0] * (n + 1) for _ in range(2)]
-    dp[0][1] = stiker[0][1]
-    dp[1][1] = stiker[1][1]
+    s1 = list(map(int,input().split()))
+    s2 = list(map(int,input().split()))
 
-    for c in range(2,n+1):
-        for r in range(2):
-            dp[r][c] = max(dp[r][c], dp[0][c-2] + stiker[r][c], dp[1][c-2] + stiker[r][c])
-            if r == 0 : dp[r][c] = max(dp[r][c], dp[1][c-1] + stiker[r][c])
-            elif r == 1 : dp[r][c] = max(dp[r][c], dp[0][c-1] + stiker[r][c])
+    for c in range(1,n):
+        s1_now, s2_now = s1[c],s2[c]
+        s1[c], s2[c] = s1[c] + s2[c-1], s2[c] + s1[c-1]
+        if c >= 2:
+            s1[c] = max(s1[c], s1[c-2]+s1_now, s2[c-2]+s1_now)
+            s2[c] = max(s2[c], s1[c-2]+s2_now, s2[c-2]+s2_now)
 
-    print(max(dp[0][n],dp[1][n]))
+    print(max(s1[n-1],s2[n-1]))
