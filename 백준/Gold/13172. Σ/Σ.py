@@ -16,6 +16,6 @@ module = 1000000007
 for _ in range(N):
     b, a = map(int,input().split())
     re_b = moduler(b, module-2, module)
-    answer += (a * re_b % module)
+    answer = (answer + a * re_b ) % module
 
-print(answer%module)
+print(answer)
