@@ -12,7 +12,6 @@ def divide_conquer(sr,sc,n):
     divide_conquer(sr, sc + (n//3), n // 3) # (0,1)
     divide_conquer(sr, sc + (n//3)*2, n // 3) # (0,2)
     divide_conquer(sr + (n//3), sc, n // 3) # (1,0)
-    divide_conquer(sr + (n//3), sc + (n//3), n // 3) # (1,1)
     divide_conquer(sr + (n//3), sc + (n//3)*2, n // 3) # (1,2)
     divide_conquer(sr + (n//3)*2, sc, n // 3) # (2,0)
     divide_conquer(sr + (n//3)*2, sc + (n//3), n // 3) # (2,1)
