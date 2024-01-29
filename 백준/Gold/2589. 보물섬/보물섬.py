@@ -31,5 +31,10 @@ for r in range(N):
 
 result = 0
 for sr, sc in lands:
-    result = max(result,BFS(sr, sc))
+    for dr, dc in ((0,1),(1,0),(0,-1),(-1,0)):
+        nr, nc = sr + dr , sc + dc
+        if 0 > nr or nr >= N or 0 > nc or nc >= M or G[nr][nc] == "W" :
+            result = max(result, BFS(sr, sc))
+            break
+
 print(result)
