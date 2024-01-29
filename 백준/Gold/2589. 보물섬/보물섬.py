@@ -11,11 +11,14 @@ def BFS(sr, sc):
     while Q:
         r, c = Q.popleft()
         for dr, dc in ((0,1),(1,0),(0,-1),(-1,0)):
-            if 0 <= (nr:= r + dr) < N and 0 <= (nc := c+dc) < M:
-                if G[nr][nc] == "L" and vi[nr][nc] == -1 :
-                    Q.append((nr, nc))
-                    vi[nr][nc] = vi[r][c] + 1
-                    Max = max(Max, vi[nr][nc])
+            nr = r + dr
+            nc = c + dc
+            if 0 > nr or nr >= N or 0 > nc or nc >= M:
+                continue
+            if G[nr][nc] == "L" and vi[nr][nc] == -1 :
+                Q.append((nr, nc))
+                vi[nr][nc] = vi[r][c] + 1
+                Max = max(Max, vi[nr][nc])
     return Max
 
 N, M = map(int,input().split())
