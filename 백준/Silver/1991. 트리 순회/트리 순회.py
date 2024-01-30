@@ -1,21 +1,24 @@
-def back(parent):
-    global preorder,inorder,postorder
-    if parent == -1:
-        return
-    preorder += chr(parent+65)
-    back(tree[parent][0])
-    inorder += chr(parent+65)
-    back(tree[parent][1])
-    postorder += chr(parent+65)
+import sys
+input = sys.stdin.readline
 
 N = int(input())
-tree = [[-1,-1] for _ in range(26)]
+G = {}
+preorder = inorder  = postorder = ""
 for _ in range(N):
-    p,c1,c2 = map(str,input().split())
-    if c1 != '.' :tree[ord(p)-65][0] = (ord(c1)-65)
-    if c2 != '.' :tree[ord(p)-65][1] = (ord(c2)-65)
-preorder = postorder = inorder = ''
-back(0)
+    root, left, right = input().split()
+    G[root] = (left, right)
+
+def Back(node):
+    global preorder, inorder, postorder
+    if node == ".":
+        return
+    preorder += node
+    Back(G[node][0])
+    inorder += node
+    Back(G[node][1])
+    postorder += node
+
+Back("A")
 print(preorder)
 print(inorder)
 print(postorder)
