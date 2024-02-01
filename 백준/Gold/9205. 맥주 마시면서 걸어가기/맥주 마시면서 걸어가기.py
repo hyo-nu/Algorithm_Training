@@ -10,12 +10,11 @@ def BFS():
     while Q:
         sr,sc = Q.popleft()
         for nr, nc in spot:
-            distance = abs(nr - sr) + abs(nc - sc)
-            if distance / 50 <= 20 and (nr,nc) not in vi:
+            if abs(nr - sr) + abs(nc - sc) <= 1000 and (nr,nc) not in vi:
                 Q.append((nr, nc))
                 vi[(nr, nc)] = 1
 
-        if (er, ec) in vi : return "happy"
+            if (er, ec) in vi : return "happy"
     return "sad"
 
 for test in range(int(input())):
