@@ -9,16 +9,12 @@ for _ in range(N):
     heappush(classes,(st,et))
 
 rooms = []
-Min = 0
+Min = 1
 for _ in range(N):
     st, et = heappop(classes)
     if rooms and st < rooms[0]:
-        heappush(rooms, et)
         Min += 1
     elif rooms and st >= rooms[0]:
         heappop(rooms)
-        heappush(rooms,et)
-    elif not rooms:
-        heappush(rooms, et)
-        Min += 1
+    heappush(rooms, et)
 print(Min)
