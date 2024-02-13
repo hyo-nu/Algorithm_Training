@@ -11,7 +11,7 @@ def union(sp, ep):
     parents[find(sp)] = find(ep)
 
 n, m = map(int,input().split())
-parents = [i for i in range(n)]
+parents = list(range(n))
 for order in range(1,m + 1):
     sp, ep = map(int,input().split())
     if find(sp) == find(ep):
