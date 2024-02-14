@@ -19,8 +19,8 @@ while True:
     for _ in range(m):
         sp, ep = map(int,input().split())
         if find(sp) == find(ep) :
-            cycle.add(parents[sp]) ; cycle.add(parents[ep])
-        if parents[sp] in cycle or parents[ep] in cycle:
+            cycle.add(parents[sp]) ;
+        elif parents[sp] in cycle or parents[ep] in cycle:
             cycle.add(parents[sp]) ; cycle.add(parents[ep])
 
         union(sp,ep)
