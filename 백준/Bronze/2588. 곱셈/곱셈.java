@@ -1,18 +1,21 @@
 import java.util.Scanner;
 
 public class Main {
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int A = sc.nextInt();
-		int B = sc.nextInt();
+		int A = Integer.parseInt(sc.nextLine());
+		int B = Integer.parseInt(sc.nextLine());
 		
-		int first = A * (B % 10);
-		int second = A * ((B / 10)%10);
-		int third = A * (B/100);
+		int one = A * (B % 10);
+		System.out.println(one);
 		
-		System.out.println(first);
-		System.out.println(second);
-		System.out.println(third);
-		System.out.println(first + (second*10) + (third*100));	
+		int two = A * ((B % 100) / 10);
+		System.out.println(two);
+		
+		int three = A * (B / 100) ;
+		System.out.println(three);
+		
+		System.out.println(one + two*10 + three*100);
 	}
 }
