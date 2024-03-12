@@ -1,18 +1,13 @@
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int A = sc.nextInt();
-		int B = sc.nextInt();
-		int C = sc.nextInt();
-	 
-		int h = C / 60;
-		int m = C % 60;
-		
-		h = h + (int)((B + m) / 60);
-		B = (B + m) % 60;
-		A = (A + h) % 24;
-		System.out.println(A + " " + B);		
-	}	
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int h = sc.nextInt();
+        int m = sc.nextInt();
+        int time = sc.nextInt();
+        h = (h +  (m + time) / 60) % 24;
+        m = (m + time) % 60;
+        System.out.println(h + " " + m);
+    }
 }
