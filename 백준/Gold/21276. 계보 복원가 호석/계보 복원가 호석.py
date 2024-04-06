@@ -41,8 +41,9 @@ def Topology_sort():
                 pedigree[name_dict_re[now]].append(name_dict_re[g])
 
 Topology_sort()
+root_parents.sort()
 print(len(root_parents))
 print(*root_parents)
 
 for name in family:
-    print(name, len(pedigree[name]), *pedigree[name])
+    print(name, len(pedigree[name]), *sorted(pedigree[name]))
