@@ -1,6 +1,26 @@
 from itertools import permutations
 
 def solution(expression):
+        
+    return 0 
+
+# from itertools import permutations
+# import re
+# def solution(expression):
+#     op = [x for x in ["*", "-", "+"] if x in expression]
+#     op = [list(y) for y in permutations(op)]
+#     ex = re.split(r'(\D)', expression)
+#     print(ex)
+#     a = []
+#     for x in op:
+#         _ex = ex[:]
+#         print(_ex)
+        
+        
+#     return 0 
+
+
+def solution(expression):
     operates = set()
     for s in expression:
         if not s.isdigit() : operates.add(s)
